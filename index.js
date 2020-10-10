@@ -28,6 +28,14 @@ async function handleRequest(request) {
 
   var url = request.url.split("/");
   var ticker = url.slice(-1)[0];
+
+  if (!ticker) {
+    const output = "Request a quote with: stck.info/{ticker}"
+    return new Response(output, {
+      headers: {'content-type': 'text/plain'},
+    })
+  }
+
   var yf_url = "https://query1.finance.yahoo.com/v8/finance/chart/";
   var params = "?interval=15m"
   var ticker_url = yf_url.concat(ticker, params);
@@ -64,6 +72,6 @@ async function handleRequest(request) {
 
   const output = ticker + " " + price + " " + human_time_string + "\n\n" + chart
   return new Response(output, {
-    headers: { 'content-type': 'text/plain'},
+    headers: {'content-type': 'text/plain'},
   })
 }
