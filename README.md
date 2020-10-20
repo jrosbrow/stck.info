@@ -6,7 +6,6 @@ A simple wrapper for the yahoo finance api to enable retireval of stock quotes f
 
 #### Planned Features
 * Additional filters
-* Charting
 
 #### Installing golang client
 As needed replace `~/go` with your configured `GOPATH`
